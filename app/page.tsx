@@ -17,7 +17,7 @@ export default function Home() {
             <Link
               key="Dashboard"
               href="/dashboard"
-              className="text-md m-2 flex hidden h-[40px] w-[150px] items-center justify-center rounded-md bg-gray-500/50 font-medium shadow-md shadow-black backdrop-blur-xl hover:bg-gray-500/90"
+              className="text-md m-2 flex h-10 w-37.5 items-center justify-center rounded-md bg-gray-500/50 font-medium shadow-md shadow-black backdrop-blur-xl hover:bg-gray-500/90"
             >
               Find out
             </Link>
