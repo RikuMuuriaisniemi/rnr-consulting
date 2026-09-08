@@ -13,7 +13,7 @@ export default function NavigationBar() {
         <div className="flex h-15 w-40 items-center justify-start">
           <Link
             href={''}
-            className="mx-2 w-fit content-center rounded-xl p-2 text-center hover:bg-cyan-500"
+            className="mx-2 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400"
           >
             <Menu />
           </Link>
@@ -22,9 +22,9 @@ export default function NavigationBar() {
           <Link
             href="/dashboard"
             className={clsx(
-              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-cyan-400 hover:text-blue-600',
+              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400',
               {
-                'bg-cyan-700 text-sky-300': pathname === '/dashboard',
+                'bg-cyan-700': pathname === '/dashboard',
               }
             )}
           >
@@ -33,9 +33,9 @@ export default function NavigationBar() {
           <Link
             href="/dashboard/riku"
             className={clsx(
-              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-cyan-400 hover:text-blue-600',
+              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400',
               {
-                'bg-cyan-700 text-sky-300': pathname === '/dashboard/riku',
+                'bg-cyan-700': pathname === '/dashboard/riku',
               }
             )}
           >
@@ -44,9 +44,9 @@ export default function NavigationBar() {
           <Link
             href="/dashboard/rio"
             className={clsx(
-              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-cyan-400 hover:text-blue-600',
+              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400',
               {
-                'bg-cyan-700 text-sky-300': pathname === '/dashboard/rio',
+                'bg-cyan-700': pathname === '/dashboard/rio',
               }
             )}
           >
@@ -55,10 +55,9 @@ export default function NavigationBar() {
           <Link
             href="/dashboard/user-administration"
             className={clsx(
-              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-cyan-400 hover:text-blue-600',
+              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400',
               {
-                'bg-cyan-700 text-sky-300':
-                  pathname === '/dashboard/user-administration',
+                'bg-cyan-700': pathname === '/dashboard/user-administration',
               }
             )}
           >
@@ -69,7 +68,7 @@ export default function NavigationBar() {
         <div className="flex h-15 w-40 justify-end">
           <Link
             href={''}
-            className="mx-2 w-fit content-center rounded-xl p-2 text-center hover:bg-cyan-500"
+            className="mx-2 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400"
           >
             <LogIn />
           </Link>
