@@ -14,4 +14,4 @@ Install Docker Desktop, and it's dependencies (WSL, enable virtualization)
 Run Docker desktop
 Run command `docker compose up -d` in Powershell
 
-Then run `pnpm install`
+Then run `pnpm dev`
