@@ -1,4 +1,6 @@
 import { fetchUsers } from '../lib/data'
+import { Button } from './button'
+import { deleteUser } from '../lib/actions'
 
 export default async function UsersList() {
   const users = await fetchUsers()
@@ -20,7 +22,7 @@ export default async function UsersList() {
           </tr>
         </thead>
         <tbody>
-          {users.map((user, u) => {
+          {users.map((user) => {
             return (
               <tr key={user.id}>
                 <td className="items-center border p-1">{user.username}</td>

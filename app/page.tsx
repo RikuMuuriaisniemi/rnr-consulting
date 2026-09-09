@@ -27,6 +27,7 @@ export default function Home() {
               src={gnome}
               fill
               alt="Picture of meme gnome"
+              loading="eager"
               sizes="(max-width: 860px) 100vw, (max-width: 1049px) 50vw, 33vw"
             />
           </div>

@@ -12,6 +12,21 @@ export async function fetchUsers() {
     return data
   } catch (error) {
     console.error('Database Error:', error)
-    throw new Error('Failed to fetch revenue data.')
+    throw new Error('Failed to fetch users.')
+  }
+}
+
+export async function fetchUsername(username: string) {
+  try {
+    console.log('Fetching list of users..')
+
+    const data = await sql<
+      User[]
+    >`SELECT username FROM users WHERE username = ${username}`
+
+    return data
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to fetch User data with username: ' + username)
   }
 }

@@ -1,9 +1,17 @@
+'use client'
+
 import { Button } from './button'
 import { createUser } from '../lib/actions'
+import { useActionState } from 'react'
+
+const initialState = {
+  message: '',
+}
 
 export default function AddUser() {
+  const [state, formAction, pending] = useActionState(createUser, initialState)
   return (
-    <form action={createUser}>
+    <form action={formAction}>
       <div className="m-2">
         <h1>Username:</h1>
         <input
@@ -22,7 +30,10 @@ export default function AddUser() {
           required
           className="bg-white text-black"
         />
-        <Button type="submit">Create user</Button>
+        <Button disabled={pending} type="submit">
+          Create user
+        </Button>
+        {state?.message && <p aria-live="polite">{state.message}</p>}
       </div>
     </form>
   )
