@@ -1,6 +1,4 @@
 import { fetchUsers } from '../lib/data'
-import { Button } from './button'
-import { deleteUser } from '../lib/actions'
 
 export default async function UsersList() {
   const users = await fetchUsers()
@@ -11,27 +9,30 @@ export default async function UsersList() {
 
   return (
     <div className="p-2">
-      <h2>Testing user database, list users here</h2>
-      <table>
-        <thead>
-          <tr>
-            <th className="items-center border px-2 py-1">Username</th>
-            <th className="items-center border px-2 py-1">
+      <div className="table w-md border-collapse overflow-hidden rounded-md shadow-md shadow-black">
+        <div className="table-header-group border-b-2 border-gray-600">
+          <div className="table-row bg-gray-400/50 font-medium">
+            <div className="table-cell items-center px-2 py-1">Username</div>
+            <div className="table-cell items-center px-2 py-1">
               User's email address
-            </th>
-          </tr>
-        </thead>
-        <tbody>
+            </div>
+          </div>
+        </div>
+        <div className="table-row-group divide-y-2 divide-gray-600 bg-gray-500/50 font-medium">
           {users.map((user) => {
             return (
-              <tr key={user.id}>
-                <td className="items-center border p-1">{user.username}</td>
-                <td className="items-center border p-1">{user.email}</td>
-              </tr>
+              <div key={user.id} className="table-row">
+                <div className="table-cell items-center px-2 py-1">
+                  {user.username}
+                </div>
+                <div className="table-cell items-center px-2 py-1">
+                  {user.email}
+                </div>
+              </div>
             )
           })}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   )
 }

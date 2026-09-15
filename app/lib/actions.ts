@@ -41,5 +41,9 @@ export async function createUser(prevState: any, formData: FormData) {
 }
 
 export async function deleteUser(userId: number) {
-  await sql`DELETE FROM users WHERE id = ${userId}`
+  try {
+    await sql`DELETE FROM users WHERE id = ${userId}`
+  } catch (error) {
+    console.log('Could not remove user!')
+  }
 }
