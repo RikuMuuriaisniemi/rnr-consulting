@@ -38,6 +38,7 @@ export async function createUser(prevState: any, formData: FormData) {
   }
 
   revalidatePath('./dashboard/user-administration')
+  return { message: 'User has been added!' }
 }
 
 export async function deleteUser(userId: number) {
@@ -46,4 +47,6 @@ export async function deleteUser(userId: number) {
   } catch (error) {
     console.log('Could not remove user!')
   }
+  revalidatePath('./dashboard/user-administration')
+  revalidatePath('./dashboard/user-administration/delete-user')
 }

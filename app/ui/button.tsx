@@ -9,11 +9,11 @@ export function Button({ children, className, ...rest }: ButtonProps) {
     <button
       {...rest}
       className={clsx(
-        'm-2 flex h-10 items-center rounded-lg bg-cyan-600 px-3 text-sm font-medium text-white shadow-md shadow-black transition-colors hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50',
+        'm-2 flex h-10 items-center rounded-lg bg-cyan-600 px-3 text-sm font-medium text-white shadow-md shadow-black transition-colors hover:bg-blue-400 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50',
         className
       )}
     >
-      {children}
+      <div>{children}</div>
     </button>
   )
 }

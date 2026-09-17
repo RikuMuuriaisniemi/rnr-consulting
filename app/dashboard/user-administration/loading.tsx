@@ -5,9 +5,7 @@ export default function Loading() {
   return (
     <>
       <div>
-        <h2 className="m-2">Testing user database, list users here</h2>
-        <UserAdminSkeleton />
-        <AddUser />
+        <h2 className="m-2">Loading...</h2>
       </div>
     </>
   )
