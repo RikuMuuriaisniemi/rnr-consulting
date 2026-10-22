@@ -1,5 +1,4 @@
-import AddUser from '@/app/ui/add-user'
-import DeleteUser from '@/app/ui/delete-user'
+import AddUser from '@/app/ui/dashboard/user-administration/add-user'
 import { Modal } from '@/app/ui/modal'
 
 export default function Page() {

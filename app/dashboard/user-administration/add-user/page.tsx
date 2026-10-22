@@ -1,4 +1,4 @@
-import AddUser from '@/app/ui/add-user'
+import AddUser from '@/app/ui/dashboard/user-administration/add-user'
 
 export default function Page() {
   'use client'

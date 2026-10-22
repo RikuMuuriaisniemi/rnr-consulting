@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { House, LogIn, Menu, UserStar } from 'lucide-react'
+import '@/app/ui/global.css'
+import { House, LogIn, Menu } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { clsx } from 'clsx'
 
@@ -9,11 +10,17 @@ export default function NavigationBar() {
   const pathname = usePathname()
   return (
     <>
-      <div className="fixed z-50 flex h-20 w-screen flex-none flex-row content-center items-center bg-cyan-600 p-2 shadow-md shadow-black">
+      <div className="fixed z-50 flex h-20 w-screen flex-none flex-row content-center items-center bg-sky-400 p-2 text-gray-800 shadow-md shadow-black dark:bg-mist-800 dark:text-white">
         <div className="flex h-15 w-40 items-center justify-start">
           <Link
             href={''}
-            className="mx-2 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400"
+            className={clsx(
+              'mx-2 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400 dark:hover:bg-mist-500',
+              {
+                'bg-cyan-400 shadow-sm shadow-black/30 dark:bg-mist-700':
+                  pathname === '',
+              }
+            )}
           >
             <Menu />
           </Link>
@@ -22,9 +29,10 @@ export default function NavigationBar() {
           <Link
             href="/dashboard"
             className={clsx(
-              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400',
+              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400 dark:hover:bg-mist-500',
               {
-                'bg-cyan-700': pathname === '/dashboard',
+                'bg-cyan-400 shadow-sm shadow-black/30 dark:bg-mist-700':
+                  pathname === '/dashboard',
               }
             )}
           >
@@ -33,9 +41,10 @@ export default function NavigationBar() {
           <Link
             href="/dashboard/riku"
             className={clsx(
-              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400',
+              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400 dark:hover:bg-mist-500',
               {
-                'bg-cyan-700': pathname === '/dashboard/riku',
+                'bg-cyan-400 shadow-sm shadow-black/30 dark:bg-mist-700':
+                  pathname === '/dashboard/riku',
               }
             )}
           >
@@ -44,9 +53,10 @@ export default function NavigationBar() {
           <Link
             href="/dashboard/rio"
             className={clsx(
-              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400',
+              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400 dark:hover:bg-mist-500',
               {
-                'bg-cyan-700': pathname === '/dashboard/rio',
+                'bg-cyan-400 shadow-sm shadow-black/30 dark:bg-mist-700':
+                  pathname === '/dashboard/rio',
               }
             )}
           >
@@ -55,9 +65,10 @@ export default function NavigationBar() {
           <Link
             href="/dashboard/user-administration"
             className={clsx(
-              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400',
+              'mx-1 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400 dark:hover:bg-mist-500',
               {
-                'bg-cyan-700': pathname === '/dashboard/user-administration',
+                'bg-cyan-400 shadow-sm shadow-black/30 dark:bg-mist-700':
+                  pathname === '/dashboard/user-administration',
               }
             )}
           >
@@ -67,8 +78,14 @@ export default function NavigationBar() {
         </div>
         <div className="flex h-15 w-40 justify-end">
           <Link
-            href={''}
-            className="mx-2 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400"
+            href="/dashboard/login"
+            className={clsx(
+              'mx-2 w-fit content-center rounded-xl p-2 text-center hover:bg-blue-400 dark:hover:bg-mist-500',
+              {
+                'bg-cyan-400 shadow-sm shadow-black/30 dark:bg-mist-700':
+                  pathname === '/dashboard/login',
+              }
+            )}
           >
             <LogIn />
           </Link>

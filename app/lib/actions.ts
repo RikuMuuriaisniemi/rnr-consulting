@@ -2,9 +2,7 @@
 import { z } from 'zod'
 import postgres from 'postgres'
 import { revalidatePath } from 'next/cache'
-import { fetchUsername } from './data'
 import { User } from './definitions'
-import { DatabaseError } from './error.definitions'
 
 const UserSchema = z.object({
   id: z.number(),

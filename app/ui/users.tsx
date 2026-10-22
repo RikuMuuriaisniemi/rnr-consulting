@@ -1,9 +1,9 @@
 import { fetchUsers } from '../lib/data'
 
 export default async function UsersList() {
-  const users = await fetchUsers()
+  const fetchedUSers = await fetchUsers()
 
-  if (!users || users.length === 0) {
+  if (fetchedUSers.total === 0) {
     return <p className="mt-4 text-gray-400">No users available.</p>
   }
 
@@ -19,11 +19,11 @@ export default async function UsersList() {
           </div>
         </div>
         <div className="table-row-group divide-y-2 divide-gray-600 bg-gray-500/50 font-medium">
-          {users.map((user) => {
+          {fetchedUSers.users.map((user) => {
             return (
               <div key={user.id} className="table-row">
                 <div className="table-cell items-center px-2 py-1">
-                  {user.username}
+                  {user.name}
                 </div>
                 <div className="table-cell items-center px-2 py-1">
                   {user.email}

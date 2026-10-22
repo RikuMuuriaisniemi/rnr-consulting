@@ -1,5 +1,6 @@
 {
   "name": "rnr-consulting",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,10 +10,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "better-auth": "^1.7.7",
     "clsx": "^2.1.1",
+    "kysely": "^0.29.6",
+    "kysely-postgres-js": "^5.0.1",
     "lucide-react": "^1.41.0",
     "next": "16.3.4",
-    "pg": "^8.23.0",
     "postgres": "^3.4.9",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -21,6 +24,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^10.10.0",
@@ -30,5 +34,5 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@11.22.0"
+  "packageManager": "pnpm@12.14.0"
 }

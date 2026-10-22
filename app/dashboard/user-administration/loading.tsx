@@ -1,4 +1,4 @@
-import AddUser from '@/app/ui/add-user'
+import AddUser from '@/app/ui/dashboard/user-administration/add-user'
 import { UserAdminSkeleton } from '@/app/ui/skeletons'
 
 export default function Loading() {

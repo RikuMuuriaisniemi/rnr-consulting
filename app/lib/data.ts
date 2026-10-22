@@ -1,28 +1,24 @@
-import postgres from 'postgres'
-import { User } from './definitions'
-
-const sql = postgres(process.env.DATABASE_URL!)
+import { db } from '@/app/lib/database'
+import { User } from './types'
+import { auth } from './auth'
+import { headers } from 'next/headers'
 
 export async function fetchUsers() {
-  try {
-    console.log('Fetching list of users..')
-
-    const data = await sql<User[]>`SELECT * FROM users`
-
-    return data
-  } catch (error) {
-    console.error('Database Error:', error)
-    throw new Error('Failed to fetch users.')
-  }
+  const users = await auth.api.listUsers({
+    query: {},
+    // This endpoint requires session cookies.
+    headers: await headers(),
+  })
+  return users
 }
 
 export async function fetchUsername(username: string) {
   try {
     console.log('Fetching list of users..')
 
-    const data = await sql<
-      User[]
-    >`SELECT username FROM users WHERE username = ${username}`
+    const data = await db
+      .selectFrom('user')
+      .where('user.username', '=', username)
 
     return data
   } catch (error) {
