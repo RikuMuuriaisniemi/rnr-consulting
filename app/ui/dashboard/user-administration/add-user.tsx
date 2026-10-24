@@ -1,23 +1,20 @@
 'use client'
-
 import { Button } from '../../button'
-import { createUser } from '../../../lib/actions'
-import { useActionState, useState } from 'react'
+import { useState } from 'react'
 import { authClient } from '@/app/lib/auth-client'
-
-export const initialState = {
-  message: '',
-}
+import { User } from 'lucide-react'
 
 export default function AddUser() {
-  const [state, formAction, pending] = useActionState(createUser, initialState)
+  const [state, setState] = useState('')
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState('user')
+  const [role, setRole] = useState<'user' | 'admin'>('user')
+
+  const testRole = 'admin'
   return (
-    <form action={formAction} className="w-fit">
+    <div className="w-fit">
       <div className="grid w-fit">
         <div className="flex flex-row justify-end px-2 py-2">
           <h1 className="my-1 justify-end">Name:</h1>
@@ -71,7 +68,10 @@ export default function AddUser() {
             id="role"
             required
             className="mx-2 w-70 rounded-sm bg-mist-600 px-1 text-white shadow-sm shadow-black"
-            onChange={(e) => setRole(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value
+              if (value === 'user' || value === 'admin') setRole(value)
+            }}
           >
             <option value="user">User</option>
             <option value="admin">Admin</option>
@@ -79,27 +79,40 @@ export default function AddUser() {
         </div>
 
         <div className="m-2 flex flex-row items-center justify-self-end text-end">
-          {state?.message && (
+          {state && (
             <p className="text-wrap" aria-live="polite">
-              {state.message}
+              {state}
             </p>
           )}
           <Button
-            disabled={pending}
             onClick={async () => {
-              const { error } = await authClient.admin.createUser({
-                email: email,
-                name: name,
-                password: password,
-                role: 'user',
-                data: { username: username },
-              })
+              const {} = await authClient.admin.createUser(
+                {
+                  email: email,
+                  name: name,
+                  password: password,
+                  role: role,
+                  data: { username: username },
+                },
+                {
+                  onRequest: () => {
+                    setState('Adding...')
+                  },
+                  onSuccess: () => {
+                    setState('User has been added!')
+                  },
+                  onError: (ctx) => {
+                    // display the error message
+                    setState(ctx.error.message)
+                  },
+                }
+              )
             }}
           >
             Create user
           </Button>
         </div>
       </div>
-    </form>
+    </div>
   )
 }

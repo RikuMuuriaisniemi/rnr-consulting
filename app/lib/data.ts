@@ -12,17 +12,13 @@ export async function fetchUsers() {
   return users
 }
 
-export async function fetchUsername(username: string) {
-  try {
-    console.log('Fetching list of users..')
+export async function fetchUserWithId(userId: string) {
+  const user = await auth.api.getUser({
+    query: {
+      id: userId,
+    },
+    headers: await headers(),
+  })
 
-    const data = await db
-      .selectFrom('user')
-      .where('user.username', '=', username)
-
-    return data
-  } catch (error) {
-    console.error('Database Error:', error)
-    throw new Error('Failed to fetch User data with username: ' + username)
-  }
+  return user
 }

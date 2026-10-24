@@ -3,6 +3,9 @@ import { z } from 'zod'
 import postgres from 'postgres'
 import { revalidatePath } from 'next/cache'
 import { User } from './definitions'
+import { authClient } from './auth-client'
+import { headers } from 'next/headers'
+import { auth } from './auth'
 
 const UserSchema = z.object({
   id: z.number(),
@@ -39,12 +42,12 @@ export async function createUser(prevState: any, formData: FormData) {
   return { message: 'User has been added!' }
 }
 
-export async function deleteUser(userId: number) {
-  try {
-    await sql`DELETE FROM users WHERE id = ${userId}`
-  } catch (error) {
-    console.log('Could not remove user!')
-  }
+export async function deleteUser(userId: string) {
+  const userDeleted = await auth.api.removeUser({
+    body: { userId: userId },
+    headers: await headers(),
+  })
+
   revalidatePath('./dashboard/user-administration')
   revalidatePath('./dashboard/user-administration/delete-user')
 }

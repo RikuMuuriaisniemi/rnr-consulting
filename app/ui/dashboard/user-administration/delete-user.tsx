@@ -1,14 +1,9 @@
-import { deleteUser } from '../../../lib/actions'
 import { fetchUsers } from '../../../lib/data'
 import { Button } from '../../button'
+import { deleteUser } from '@/app/lib/actions'
 
 export default async function DeleteUser() {
   const fetchedUsers = await fetchUsers()
-
-  async function handleDeleteUser(userId: number) {
-    console.log('Deleting user..!!')
-    deleteUser(userId)
-  }
 
   if (fetchedUsers.total === 0) {
     return <p className="mt-4 text-gray-400">No users available.</p>
@@ -26,7 +21,7 @@ export default async function DeleteUser() {
       </div>
       <div className="table-row-group divide-y-2 divide-gray-600 bg-gray-500/50 font-medium">
         {fetchedUsers.users.map((user) => {
-          const deleteUserWithId = deleteUser.bind(null, Number(user.id))
+          const deleteUserWithId = deleteUser.bind(null, user.id)
           return (
             <div key={user.id} className="table-row">
               <div className="table-cell items-center px-2 py-1">
@@ -44,6 +39,7 @@ export default async function DeleteUser() {
           )
         })}
       </div>
+      <div></div>
     </div>
   )
 }

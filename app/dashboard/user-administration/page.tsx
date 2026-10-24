@@ -7,12 +7,12 @@ import { Suspense } from 'react'
 export default async function Page() {
   return (
     <>
-      <div className="w-fit outline">
+      <div className="w-fit">
         <h2 className="text-lg">Testing user database, list users here</h2>
         <Suspense fallback={<UserAdminSkeleton />}>
           <UsersList />
         </Suspense>
-        <div className="mx-2 flex flex-row justify-items-end outline">
+        <div className="mx-2 flex flex-row justify-items-end">
           <Link
             href="/dashboard/user-administration/delete-user"
             className={clsx(

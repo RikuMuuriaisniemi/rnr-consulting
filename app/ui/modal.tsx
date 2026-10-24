@@ -28,7 +28,7 @@ export function Modal({
           </h1>
         </div>
 
-        <div>{children}</div>
+        <div className="p-1">{children}</div>
       </div>
     </div>
   )

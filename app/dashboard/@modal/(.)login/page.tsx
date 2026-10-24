@@ -3,7 +3,7 @@ import { Modal } from '@/app/ui/modal'
 
 export default function Page() {
   return (
-    <div className="bg-mist-900">
+    <div>
       <Modal title="Sign in">
         <Login />
       </Modal>
