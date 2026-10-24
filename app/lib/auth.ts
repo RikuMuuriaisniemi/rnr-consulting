@@ -13,7 +13,7 @@ export const auth = betterAuth({
   plugins: [username(), admin(), nextCookies()],
   appName: 'R&R',
   baseURL: process.env.BETTER_AUTH_URL!,
-  trustedOrigins: ['http://localhost:8888', 'https://*.rnrconsulting.eu/'],
+  trustedOrigins: ['http://localhost:8888'],
 })
 
 admin({
