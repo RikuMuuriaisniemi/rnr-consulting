@@ -1,3 +1,3 @@
-export default function Rio() {
+export default function Page() {
   return <div>Page for Rio!!</div>
 }
